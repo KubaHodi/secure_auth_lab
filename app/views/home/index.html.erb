@@ -1,0 +1,12 @@
+<h1>SecureAuth Lab</h1>
+<p>Demonstracyjna aplikacja bezpiecznego uwierzytelniania i aplikacji</p>
+<% if authenticated? %>
+    <p>Jesteś zalogowany.<p>
+    <%= button_to "Wyloguj się", session_path, method: :delete%>
+<% else %>
+    <%= link_to "Zaloguj się", new_session_path %>
+    <%= link_to "Załóż konto", sign_up_path %>
+<% end %>
+
+
+
