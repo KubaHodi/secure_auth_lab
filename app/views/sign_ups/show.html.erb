@@ -1,0 +1,58 @@
+<div>
+    <h1>Utwórz konto aby korzystać z naszych usług</h1>
+    <%= form_with model: @user, url: sign_up_path, local: true do |form| %>
+    <% if @user.errors.any? %>
+        <div>
+            <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+        <div class="form-field">
+            <%= form.label :email, "Adres e-mail" %>
+            <%= form.email_field :email, 
+                required: true,
+                autofocus: true,
+                autocomplete: "email",
+                placeholder: "Wprowadź swój adres e-mail" 
+            %>
+        </div>
+
+        <div class="form-field">
+            <%= form.label :username, "Nazwa użytkownika" %>
+            <%= form.text_field :username, 
+                required: true,
+                autocomplete: "username",
+                placeholder: "Wprowadź swoją nazwę użytkownika" 
+            %>
+        </div>
+
+        <div class="form-field">
+            <%= form.label :password, "Hasło" %>
+            <%= form.password_field :password,
+                required: true,
+                minlength: 12,
+                autocomplete: "new-password"
+             %>
+             <small>
+                Hasło musi mieć co najmniej 12 znaków
+             </small>
+        </div>
+
+        <div class="form-field">
+            <%= form.label :password_confirmation, "Potwierdź hasło" %>
+            <%= form.password_field :password_confirmation,
+                minlength: 12,
+                required: true,
+                autocomplete: "new-password"
+            %>
+        </div>
+
+        <div>
+            <%= form.submit "Utwórz konto" %>
+        </div>
+    <% end %>
+</div>
