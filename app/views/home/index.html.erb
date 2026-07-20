@@ -8,5 +8,9 @@
     <%= link_to "Załóż konto", sign_up_path %>
 <% end %>
 
+<% if authenticated? && Current.user.admin? %>
+  <%= link_to "Panel administratora", admin_users_path %>
+<% end %>
+
 
 

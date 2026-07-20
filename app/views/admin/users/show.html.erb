@@ -1,0 +1,42 @@
+<h1>Użytkownik: <%= @user.username %></h1>
+
+<dl>
+  <dt>Adres e-mail</dt>
+  <dd><%= @user.email_address %></dd>
+
+  <dt>Rola</dt>
+  <dd><%= @user.role %></dd>
+
+  <dt>Data utworzenia</dt>
+  <dd><%= @user.created_at.strftime("%d.%m.%Y %H:%M") %></dd>
+</dl>
+
+<h2>Zmień rolę</h2>
+
+<%= form_with model: @user,
+              url: admin_user_path(@user),
+              method: :patch do |form| %>
+
+  <% if @user.errors.any? %>
+    <div role="alert">
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :role, "Rola" %>
+
+    <%= form.select :role,
+          User.roles.keys.map { |role| [role.humanize, role] } %>
+  </div>
+
+  <%= form.submit "Zapisz zmianę" %>
+<% end %>
+
+<p>
+  <%= link_to "Wróć do listy", admin_users_path %>
+</p>

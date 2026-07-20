@@ -1,0 +1,29 @@
+<h1>Panel administratora</h1>
+
+<h2>Użytkownicy</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nazwa</th>
+      <th>E-mail</th>
+      <th>Rola</th>
+      <th>Data utworzenia</th>
+      <th>Akcje</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.email_address %></td>
+        <td><%= user.role %></td>
+        <td><%= l(user.created_at, format: :short) %></td>
+        <td>
+          <%= link_to "Szczegóły", admin_user_path(user) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
