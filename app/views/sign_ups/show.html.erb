@@ -34,18 +34,18 @@
             <%= form.label :password, "Hasło" %>
             <%= form.password_field :password,
                 required: true,
-                minlength: 12,
+                minlength: 6,
                 autocomplete: "new-password"
              %>
              <small>
-                Hasło musi mieć co najmniej 12 znaków
+                Hasło musi mieć co najmniej 6 znaków
              </small>
         </div>
 
         <div class="form-field">
             <%= form.label :password_confirmation, "Potwierdź hasło" %>
             <%= form.password_field :password_confirmation,
-                minlength: 12,
+                minlength: 6,
                 required: true,
                 autocomplete: "new-password"
             %>
