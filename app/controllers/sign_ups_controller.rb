@@ -19,7 +19,7 @@ class SignUpsController < ApplicationController
 
     def sign_up_params
         params.expect(
-        user: %i[username email password password_confirmation]
+        user: %i[username email_address password password_confirmation]
         )
     end
 end
