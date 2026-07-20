@@ -1,0 +1,21 @@
+<h1>Usuń konto</h1>
+<div class="danger-zone">
+<h2>Uwaga: Ta operacja jest nieodwracalna!</h2>
+<p>Po usunięciu konta wszystkie Twoje dane zostaną trwale usunięte i nie będzie możliwości ich odzyskania. Prosimy o ostrożność i upewnienie się, że chcesz kontynuować.</p>
+<%= form_with url: account_path, method: :delete do |form| %>
+    <div>
+        <%= form.label :password, "Wprowadź swoje hasło, aby potwierdzić usunięcie konta" %>
+        <%= form.password_field :password,
+         required: true,
+         autocomplete: "current-password" 
+        %>
+    </div>
+
+    <div>
+        <%= form.check_box :confirm_deletion, required: true %>
+        <%= form.label :confirm_deletion, "Potwierdzam usunięcie konta" %>
+    </div>
+    
+    <%= form.submit "Trwale usuń konto", data: { turbo_confirm: "Czy na pewno chcesz usunąć swoje konto? Ta operacja jest nieodwracalna." } %>
+<% end %>
+</div>

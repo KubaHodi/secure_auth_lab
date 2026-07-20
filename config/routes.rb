@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get "accounts/show"
   resource :session
   resources :passwords, param: :token
   resource :sign_up, only: [:show, :create]
+  resource :account, only: [:show, :destroy]
 
   root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
