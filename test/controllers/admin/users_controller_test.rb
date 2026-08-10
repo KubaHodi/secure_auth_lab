@@ -14,19 +14,20 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "admin should get show" do
-    get admin_user_url(@user)
+    get admin_user_url(@admin)
     assert_response :success
   end
   
-  test "user should not get index" do
+  test "regular user should not get index" do
     sign_in_as(@user)
     get admin_users_url
-    assert_response :redirect
+    assert_redirected_to root_url
   end
 
-  test "user should not get show" do
+  test "regular user should not get show" do
     sign_in_as(@user)
-    get admin_user_url(@admin)
-    assert_response :redirect
+    get admin_user_url(@user)
+    assert_redirected_to root_url
   end
+
 end

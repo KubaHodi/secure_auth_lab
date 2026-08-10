@@ -20,5 +20,9 @@ module ActiveSupport
         password: password 
       }
     end
+    def sign_out
+      Current.session&.destroy
+      cookies.delete("session_id")
+    end
   end
 end
